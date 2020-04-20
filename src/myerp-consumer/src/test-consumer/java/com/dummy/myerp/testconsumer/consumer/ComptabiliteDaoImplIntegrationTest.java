@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -78,6 +79,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given__numberOfEcritureComptableRecordedWhen_getListEcritureComptableIsUsed_Then_shouldReturnCorrectNumberOfRecords() throws NotFoundException {
         // GIVEN
         List<EcritureComptable> initialList = classUnderTest.getListEcritureComptable();
@@ -118,6 +120,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_idInDataBase_When_getEcritureComptableIsUsed_Then_shouldReturnMatchingBean() throws NotFoundException {
         // GIVEN
         classUnderTest.insertEcritureComptable(vEcritureComptable);
@@ -185,6 +188,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_validEcritureComptableToInsert_When_insertecritureComptableIsUsed_Then_shouldReturnTrue() throws NotFoundException, ParseException {
         // GIVEN
 
@@ -215,6 +219,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given__When__Then() throws NotFoundException {
         // GIVEN
         String reference = "AC-2016/00001";
@@ -267,6 +272,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_validCodeJournalAndSequence_When_insertSequenceEcritureComptableIsUsed_Then_shouldBeanSequenceValue() {
         // GIVEN
         String codeJournal = "AC";
@@ -297,6 +303,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_actualSequenceValueIs40_When_updateSequenceEcritureComptableIsUesd_Then_valueShouldBe41() {
         // GIVEN
         String codeJournal = "AC";
@@ -325,6 +332,7 @@ public class ComptabiliteDaoImplIntegrationTest extends ConsumerTestCase {
     /*==========================================================================*/
 
     @Test(expected = EmptyResultDataAccessException.class)
+    @Transactional
     public void Given_insertNewSequence_When_deleteSequenceEcritureComptableIsUsed_Then_newSequenceShouldBeDelete() {
         // GIVEN
         String codeJournal = "AC";

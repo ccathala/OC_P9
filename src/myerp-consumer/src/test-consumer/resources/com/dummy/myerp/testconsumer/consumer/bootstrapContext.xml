@@ -4,7 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-    <!-- ========== Transaction Managers ========== -->
+    <!-- ========== Consumer context ========== -->
     <import resource="classpath:/com/dummy/myerp/consumer/applicationContext.xml"/>
+
+    <!-- ========== Transaction Managers ========== -->
+    <import resource="transactionContext.xml"/>
 </beans>
 

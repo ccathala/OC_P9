@@ -4,7 +4,9 @@ import java.sql.Types;
 import java.util.List;
 
 import com.dummy.myerp.model.bean.comptabilite.*;
-import org.springframework.dao.DataAccessException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -23,6 +25,8 @@ import com.dummy.myerp.technical.exception.NotFoundException;
  * Implémentation de l'interface {@link ComptabiliteDao}
  */
 public class ComptabiliteDaoImpl extends AbstractDbConsumer implements ComptabiliteDao {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // ==================== Constructeurs ====================
     /** Instance unique de la classe (design pattern Singleton) */
@@ -84,6 +88,7 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
     public List<EcritureComptable> getListEcritureComptable() {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
         EcritureComptableRM vRM = new EcritureComptableRM();
+        logger.debug(SQLgetListEcritureComptable);
         List<EcritureComptable> vList = vJdbcTemplate.query(SQLgetListEcritureComptable, vRM);
         return vList;
     }

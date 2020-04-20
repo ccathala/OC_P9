@@ -54,7 +54,8 @@ public class EcritureComptableTest {
     // Soit 2 lignes d'écriture comptable de valeur de crédit 60 et 40, lorsque fait
     // le total du crédit, alors on obtient 100.
     @Test
-    public void Given_accountWriting1CreditIsEqual60AndAccountWriting2CreditIsEqual40_When_getTotalCreditIsUsed_Then_shouldReturn100() {
+    public void
+    Given_accountWriting1CreditIsEqual60AndAccountWriting2CreditIsEqual40_When_getTotalCreditIsUsed_Then_shouldReturn100() {
         // GIVEN
 
         // Set Credit values

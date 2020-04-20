@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -123,6 +124,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_newValidEcritureComptable_When_insertEcritureComptableIsUsed_Then_recordedBeanTheSameAsTheGivenBean() throws FunctionalException, NotFoundException, ParseException {
         // GIVEN
 
@@ -182,6 +184,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_modifiedBean_When_updateEcritureComptableIsUsed_Then_shouldReturnModifiedBean() throws FunctionalException, NotFoundException {
         // GIVEN
         classUnderTest.insertEcritureComptable(vEcritureComptable);
@@ -222,6 +225,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test(expected = NotFoundException.class)
+    @Transactional
     public void Given_addedEcritureComptableWithid_When_deleteEcritureComptableIsUsed_Then_beanAddedShouldBeDeleted() throws FunctionalException, NotFoundException {
         // GIVEN
         classUnderTest.insertEcritureComptable(vEcritureComptable);
@@ -274,6 +278,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_validCodeJournalAndSequence_When_insertSequenceEcritureComptableIsUsed_Then_shouldBeanSequenceValue() {
         // GIVEN
         String codeJournal = "AC";
@@ -304,6 +309,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test
+    @Transactional
     public void Given_actualSequenceValueIs40_When_updateSequenceEcritureComptableIsUesd_Then_valueShouldBe41() {
         // GIVEN
         String codeJournal = "AC";
@@ -332,6 +338,7 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
     /*==========================================================================*/
 
     @Test(expected = EmptyResultDataAccessException.class)
+    @Transactional
     public void Given_insertNewSequence_When_deleteSequenceEcritureComptableIsUsed_Then_newSequenceShouldBeDelete() {
         // GIVEN
         String codeJournal = "AC";
@@ -342,10 +349,4 @@ public class ComptabiliteManagerImplIntegrationTest extends BusinessTestCase {
         // THEN
         classUnderTest.getSequenceEcritureComptableLastValue(codeJournal, year);
     }
-
-    /*==========================================================================*/
-    /*              checkEcritureComptableContext unit tests                    */
-    /*==========================================================================*/
-
-
 }
